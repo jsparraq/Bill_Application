@@ -9,6 +9,9 @@
 # production
 /build
 
+#Conexion
+/src/components/conexion.js
+
 # misc
 .DS_Store
 .env.local
