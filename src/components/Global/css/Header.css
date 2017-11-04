@@ -1,0 +1,12 @@
+img {
+  max-width: 25%;
+  min-width: 20%;
+  border-radius: 8px;
+  margin: auto;
+  height: auto;
+  display: block;
+}
+
+.fondo {
+  background: #7c7680;
+}
