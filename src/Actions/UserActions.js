@@ -1,11 +1,7 @@
 //Dependencias
-import firebase from 'firebase';
+import {app as conexion} from '../components/conexion';
 
 //Recursos
-import itemsadmin from '../data/administrador';
-import itemsanonimo from '../data/anonimo';
-import itemsemployee from '../data/empleado';
-import itemsclient from '../data/user';
 
 /**
  * Esta función se conecta con firebase, en un primer momento revisa si el correo
@@ -17,10 +13,10 @@ import itemsclient from '../data/user';
  */
 const ADDUSER = Usuario => {
   return dispatch => {
-    return firebase.auth().fetchProvidersForEmail(Usuario.email)
+    return conexion.auth().fetchProvidersForEmail(Usuario.email)
       .then((providers) => {
         if(providers.length === 0){
-          return firebase.auth().createUserWithEmailAndPassword(Usuario.email,Usuario.password);
+          return conexion.auth().createUserWithEmailAndPassword(Usuario.email,Usuario.password);
         }else{
           dispatch({
             type: "ERROR",
@@ -30,27 +26,29 @@ const ADDUSER = Usuario => {
       }).then((user) => {
         if(user){
           if(Usuario.role === "Cliente"){
-            firebase.database().ref('users/'+ user.uid).set({
+            conexion.database().ref('users/'+ user.uid).set({
               correo: Usuario.email,
               name: Usuario.nombre,
               role: Usuario.role
             });
-            firebase.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
+            conexion.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
             dispatch({
               type:"SUCCESS"
             });
           }else{
-            firebase.database().ref("passwords/").orderByChild("Admin").once("child_added", function(snapshot) {
+            conexion.database().ref("passwords/").orderByChild("Admin").once("child_added", function(snapshot) {
               if(snapshot.val().Employee === Usuario.password2 || snapshot.val().Admin === Usuario.password2){
-                firebase.database().ref('users/'+ user.uid).set({
+                conexion.database().ref('users/'+ user.uid).set({
                   correo: Usuario.email,
                   name: Usuario.nombre,
                   role: Usuario.role
                 });
-                firebase.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
-                dispatch({
-                  type:"SUCCESS"
-                });
+                conexion.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
+                const usuarioaux = {
+                  email: Usuario.email,
+                  password: Usuario.password
+                }
+                return LOGIN(usuarioaux);
               }else{
                 dispatch({
                   type: "ERROR",
@@ -78,7 +76,7 @@ const ADDUSER = Usuario => {
  */
 const LOGIN = Usuario => {
   return dispatch => {
-    return firebase.auth().fetchProvidersForEmail(Usuario.email)
+    return conexion.auth().fetchProvidersForEmail(Usuario.email)
       .then((providers) => {
         if(providers.length === 0){
           dispatch({
@@ -86,22 +84,13 @@ const LOGIN = Usuario => {
             message: "No existe ningún usuario con este correo"
           });
         }else{
-          firebase.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password).then((user) => {
-            firebase.database().ref("users/").child(user.uid).on("value", function(snapshot) {
-              let items = itemsanonimo;
-              if(snapshot.val().role === "Cliente"){
-                  items =  itemsclient
-              }else if(snapshot.val().role === "Administrador"){
-                  items =  itemsadmin
-              }else{
-                  items =  itemsemployee
-              }
+          conexion.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password).then((user) => {
+            conexion.database().ref("users/").child(user.uid).on("value", function(snapshot) {
               dispatch({
                 type: "LOGIN",
-                user: firebase.auth().currentUser,
+                user: conexion.auth().currentUser,
                 auth: true,
-                role: snapshot.val().role,
-                items
+                role: snapshot.val().role
               });
             }
             );
@@ -123,11 +112,11 @@ const LOGIN = Usuario => {
 }
 
 /**
- * Está función se conecta con firebase y cierra sesión del usuario actual
+ * Está función se conecta con conexion y cierra sesión del usuario actual
  */
 const LOGOUT = () => {
   return dispatch => {
-    return firebase.auth().signOut()
+    return conexion.auth().signOut()
       .then(() => {
         dispatch({
           type: "LOGOUT"

@@ -1,0 +1,31 @@
+{
+  "uid":"NER3rHFjoCab7Nwq4MB2LBC0izl1",
+  "displayName":null,
+  "photoURL":null,
+  "email":"administrador@gmail.com",
+  "emailVerified":false,
+  "phoneNumber":null,
+  "isAnonymous":false,
+  "providerData":[
+    {
+      "uid":"administrador@gmail.com",
+      "displayName":null,
+      "photoURL":null,
+      "email":"administrador@gmail.com",
+      "phoneNumber":null,
+      "providerId":"password"
+    }
+  ],
+  "apiKey":"AIzaSyD8n_fa4tCVOTNzgCZ9t2KCg5mpui3zbEw",
+  "appName":"[DEFAULT]",
+  "authDomain":"mi-bill.firebaseapp.com",
+  "stsTokenManager":{
+    "apiKey":"AIzaSyD8n_fa4tCVOTNzgCZ9t2KCg5mpui3zbEw",
+    "refreshToken":"APWA_kq7XP8IAtbQwDcKn81-7m7oNFzNEZx_Z4QiWfJL7-B_eUuvwbuX0mHfZ9-Ru1AviE9awG_Rxmm3loKCcH9N1D13wlt03NFzqi5XuZynm-WfgsfIPF-v1qywY9yz2rrk1blvcz6kPXheRHZGZsi7IRTjtbCSQb0eCG8Rs4mv5Pmb9qdtoOhXuHA-4ISDFnvrzxZdw62z",
+    "accessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6ImEwODc4ZTQyN2U2MDlhYjMxMDBkNzQ3ZjcwNzg5MGFkYWI3YzQ5ZGEifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbWktYmlsbCIsImF1ZCI6Im1pLWJpbGwiLCJhdXRoX3RpbWUiOjE1MTAxMTYzMDYsInVzZXJfaWQiOiJORVIzckhGam9DYWI3TndxNE1CMkxCQzBpemwxIiwic3ViIjoiTkVSM3JIRmpvQ2FiN053cTRNQjJMQkMwaXpsMSIsImlhdCI6MTUxMDExNjMwNiwiZXhwIjoxNTEwMTE5OTA2LCJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFkbWluaXN0cmFkb3JAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.JOHgKGpFRcr9qJl2GePxhmyULPNFcJGRD1kX73xkuMZwIcJQsxvz1QPgbk6sBKvKBbU5jIxtCqm6m4jlEFIa7nHabhGZ04P4zw9txbNdl-hB20qfcyVHOLlsUVWdKNzoUm4eVepNsCn6Cqy5XWmRRXrHa-HtUrUiqHIKcvkULkUe5jmC81lMOETdAtWtdAnDS-O_syae4gCqtxWEQ9SCdzWen2qEqkDa2fhlBcfp7k02aHg2BWzH9ZK8TojpmI9uIIV_pL8kqhg7I3VK0MzXDnRsyvaG9I-DZs9K0sl_zZgxdwWXNpR2QOMVJtkioG9mfG3KLH4PAfvPpVRc7vATVg",
+    "expirationTime":1510119906451
+    },
+  "redirectEventId":null,
+  "lastLoginAt":"1510116216000",
+  "createdAt":"1506988750000"
+}

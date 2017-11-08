@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import itemsanonimo from './data/anonimo';
+import Headeradministrador from './components/Headers/Administrador';
+import Headeranonimo from './components/Headers/anonimo';
 
-
-const Items = (state = itemsanonimo, action) => {
+const Header = (state = Headeranonimo, action) => {
 	if(action.type === "LOGIN"){
-		return action.items;
+		return Headeradministrador;
 	}else if(action.type === "LOGOUT"){
-		return itemsanonimo;
+		return Headeranonimo;
 	}
 	return state;
 }
@@ -70,4 +70,4 @@ const logger = store => next => action => {
 	return result;
 }
 
-export default createStore(combineReducers({Productos, Popup, Message, RedirectSign , User, Role, Items}), applyMiddleware(logger, thunk));
+export default createStore(combineReducers({Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));

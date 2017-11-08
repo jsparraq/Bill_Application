@@ -1,4 +1,4 @@
-import { CERRAR } from '../../../components/Actions/Pop_up';
+import { CERRAR } from '../../../Actions/Pop_up';
 import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();

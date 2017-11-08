@@ -24,6 +24,14 @@ class Principal extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  console.log(JSON.stringify(state.User));
+  return {
+    Headergen: state.Header
+  };
+};
+
+
 const mapDispatchToProps = dispatch => {
   return {
     INICIO(){
@@ -34,4 +42,4 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Principal);
+export default connect(mapStateToProps, mapDispatchToProps)(Principal);

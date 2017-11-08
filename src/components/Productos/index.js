@@ -10,9 +10,9 @@ import './css/index.css';
 
 export const Productos =  ({ productos })=> {
     return (
-      <div className = "gallery-container">
+      <div className = "Galeria">
         {productos.map((producto, key) =>
-          <div className = "gallery-item" key = {key}>
+          <div className = "Producto" key = {key}>
             <div className = "Titulo text-center"> {producto.nombre}</div>
             <div>
               <img src = {producto.imagen} className = "img" alt= {producto.nombre} />

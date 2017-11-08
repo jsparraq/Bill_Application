@@ -1,7 +1,6 @@
 //Dependencias
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {app as conexion} from './conexion';
 
 //Componentes
 import Header from './Global/Header';
@@ -11,12 +10,6 @@ import Content from './Global/Content';
 
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      autenticacion: false
-    };
-  }
   static PropTypes = {
     children: PropTypes.object.isRequired
   };
