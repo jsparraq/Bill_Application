@@ -10,14 +10,9 @@ import { Navbar, Nav, NavItem, Button} from 'react-bootstrap';
 const Headeranonimo = () => {
     return(
       <Navbar inverse collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="./principal">Principal</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
+            <LinkContainer to ='./principal' ><NavItem>Principal</NavItem></LinkContainer>
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>

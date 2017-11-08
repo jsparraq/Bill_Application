@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import './css/Header.css';
 
 //Actions
-import { LOGOUT } from '../../Actions/UserActions';
 
 class Headergeneral extends Component{
   render() {
@@ -26,15 +25,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    LOGOUT(){
-      dispatch(LOGOUT());
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Headergeneral);
+
+export default connect(mapStateToProps, null)(Headergeneral);
 
 
 /*<div>

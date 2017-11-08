@@ -25,7 +25,6 @@ class Principal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(JSON.stringify(state.User));
   return {
     Headergen: state.Header
   };

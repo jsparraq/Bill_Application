@@ -69,4 +69,15 @@ const GETPRODUCTS = () => {
   }
 }
 
-export { ADDPRODUCT, GETPRODUCTS };
+const REMOVEPRODUCTO = (producto) => {
+  return dispatch => {
+    return firebase.database().ref('productos/'+producto.nombre).remove()
+      .then(function(){
+        return GETPRODUCTS();
+      }).catch(function(error){
+        console.log("Mal")
+      })
+  }
+}
+
+export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO };
