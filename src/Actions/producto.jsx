@@ -79,4 +79,8 @@ const REMOVEPRODUCTO = (producto) => {
   }
 }
 
-export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO };
+const UPDATEPRODUCTO = (producto) => {
+  return producto;
+}
+
+export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO, UPDATEPRODUCTO };
