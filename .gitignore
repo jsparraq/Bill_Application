@@ -10,7 +10,7 @@
 /build
 
 #Conexion
-/src/components/conexion.js
+/src/components/conexion.jsx
 
 # misc
 .DS_Store
