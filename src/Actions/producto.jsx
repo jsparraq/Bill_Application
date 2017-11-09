@@ -17,7 +17,7 @@ const ADDPRODUCT = (producto) => {
             message: "Producto con este nombre ya existe"
           });
         }else{
-          const storage = firebase.storage().ref(`Productos/${producto.nombre}`);
+          const storage = firebase.storage().ref(`Productos/${producto.name}`);
           const task = storage.put(producto.img);
           task.on('state_changed' , snapshot => {
           }, error => {
@@ -72,7 +72,7 @@ const GETPRODUCTS = () => {
 const REMOVEPRODUCTO = (producto) => {
   return dispatch => {
     firebase.database().ref('productos/' + producto.nombre).remove();
-    firebase.storage().ref('Productos/' + producto.nombre + '.png').delete();
+    firebase.storage().ref('Productos/' + producto.nombre).delete();
     dispatch({
               type:"SUCCESS"
             });
