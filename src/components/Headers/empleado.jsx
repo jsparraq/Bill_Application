@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
 //Recursos
-import { Navbar, Nav, NavItem, Button, Glyphicon, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button, Glyphicon} from 'react-bootstrap';
 
 //Actions
 import { LOGOUT } from '../../Actions/UserActions';

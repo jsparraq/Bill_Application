@@ -71,12 +71,10 @@ const GETPRODUCTS = () => {
 
 const REMOVEPRODUCTO = (producto) => {
   return dispatch => {
-    return firebase.database().ref('productos/'+producto.nombre).remove()
-      .then(function(){
-        return GETPRODUCTS();
-      }).catch(function(error){
-        console.log("Mal")
-      })
+    firebase.database().ref('productos/'+ producto.nombre).remove();
+    dispatch({
+              type:"SUCCESS"
+            });
   }
 }
 

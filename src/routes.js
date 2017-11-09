@@ -10,7 +10,7 @@ import addProducto from './components/producto';
 import Page404 from './components/Page404';
 import Registro from './components/Sign_up';
 import Log_in from './components/Log_in';
-import Removeproducto from './components/producto/eliminar';
+import Removeproducto from './components/Productos/eliminar';
 
 const AppRoutes = () =>
   <App>

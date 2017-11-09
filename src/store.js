@@ -2,10 +2,18 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import Headeradministrador from './components/Headers/Administrador';
 import Headeranonimo from './components/Headers/anonimo';
+import Headerempleado from './components/Headers/empleado';
+import Headercliente from './components/Headers/cliente';
 
 const Header = (state = Headeranonimo, action) => {
 	if(action.type === "LOGIN"){
-		return Headeradministrador;
+		if(action.role === "Administrador"){
+			return Headeradministrador;
+		}else if(action.role === "Empleado"){
+			return Headerempleado;
+		}else{
+			return Headercliente;
+		}
 	}else if(action.type === "LOGOUT"){
 		return Headeranonimo;
 	}
@@ -55,12 +63,12 @@ const Popup  = (state = null, action) => {
 	return state;
 };
 
-	const Productos = (state = [], action) => {
-		if(action.type === "MOSTRAR"){
-			return action.productos
-		}
-		return state;
-	};
+const Productos = (state = [], action) => {
+	if(action.type === "MOSTRAR"){
+		return action.productos
+	}
+	return state;
+};
 
 
 const logger = store => next => action => {

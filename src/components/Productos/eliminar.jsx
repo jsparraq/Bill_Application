@@ -1,13 +1,14 @@
 //Dependencias
-import React from 'react';
+import React,{ Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //Recursos
 import { Button, Glyphicon,Table, Panel } from 'react-bootstrap';
-import './css/eliminar.css';
 
 //Actions
 import { REMOVEPRODUCTO  } from '../../Actions/producto';
+import { GETPRODUCTS } from '../../Actions/producto';
 
 
 const loginStyles = {
@@ -19,16 +20,27 @@ const loginStyles = {
   padding: "10px"
 };
 
+class EliminarProductos extends Component {
 
-export const EliminarProductos =  ({ productos, REMOVEPRODUCTO })=> {
+  componentWillMount(){
+    this.props.GETPRODUCTS();
+  }
+
+  render() {
+
+    if(this.props.redirect === true){
+      return <Redirect to = '/principal' />
+    }
+
+
     return (
       <Panel>
         <Table fill style = {loginStyles}>
           <tbody>
-            {productos.map((producto,key) =>
+            {this.props.productos.map((producto,key) =>
               <tr key = {key}>
                 <td> {producto.nombre}</td>
-                <td className ="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick = {() => REMOVEPRODUCTO(producto)}> <Glyphicon glyph="trash"/></Button></td>
+                <td className ="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick = {() => this.props.REMOVEPRODUCTO(producto)}> <Glyphicon glyph="trash"/></Button></td>
               </tr>
             )}
           </tbody>
@@ -36,10 +48,13 @@ export const EliminarProductos =  ({ productos, REMOVEPRODUCTO })=> {
       </Panel>
     );
   }
+}
+
 
 const mapStateToProps = state => {
   return {
-    productos: state.Productos
+    productos: state.Productos,
+    redirect: state.RedirectSign
   };
 };
 
@@ -47,6 +62,8 @@ const mapDispatchToProps = dispatch => {
   return {
     REMOVEPRODUCTO(producto){
       dispatch(REMOVEPRODUCTO(producto));
+    },GETPRODUCTS(){
+      dispatch(GETPRODUCTS());
     }
   }
 }
