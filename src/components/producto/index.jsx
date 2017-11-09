@@ -34,7 +34,7 @@ class AddProducto extends Component{
     const desc = this.descProductInput.value;
     const img1 = this.imageInput.value;
     const img = this.imageInput.files[0];
-    let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    let allowedExtensions = /(.png)$/i;
     this.loginForm.reset();
     if(name === "" || price === "" || desc === "" || !img){
       this.props.ERROR("Hay campos vacios");
