@@ -40,6 +40,7 @@ const ADDUSER = Usuario => {
               role: Usuario.role
             });
           }else{
+            
             conexion.database().ref("passwords/").orderByChild("Admin").once("child_added", function(snapshot) {
               if(snapshot.val().Employee === Usuario.password2 || snapshot.val().Admin === Usuario.password2){
                 conexion.database().ref('users/'+ user.uid).set({
