@@ -85,7 +85,7 @@ class AddUser extends Component{
   }
   render(){
     if(this.props.redirect === true){
-      return <Redirect to = '/' />
+      return <Redirect to = '/principal' />
     }
     return(
       <div className = "text-center" style = {loginStyles}>

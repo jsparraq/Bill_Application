@@ -22,6 +22,7 @@ const Headeradministrador = ({ LOGOUT }) => {
               <LinkContainer to ='./removeProducto' ><MenuItem >Eliminar producto</MenuItem></LinkContainer>
               <LinkContainer to ='./updateproducto' ><MenuItem >Editar producto</MenuItem></LinkContainer>
             </NavDropdown>
+            <LinkContainer to ='./perfil' ><NavItem>Perfil</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>
             <LinkContainer to ="./principal" key = {1}><NavItem> <Button onClick={() => LOGOUT()} bsStyle = "danger"><Glyphicon glyph="log-out" /></Button></NavItem></LinkContainer>

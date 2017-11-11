@@ -8,6 +8,7 @@ import Principal from './components/Principal';
 import Compras from './components/Compras';
 import addProducto from './components/producto';
 import Page404 from './components/Page404';
+import Perfil from './components/Perfil';
 import Registro from './components/Sign_up';
 import Log_in from './components/Log_in';
 import Removeproducto from './components/Productos/eliminar';
@@ -16,6 +17,7 @@ import actualizareproducto from './components/Productos/actualizar';
 const AppRoutes = () =>
   <App>
     <Switch>
+      <Route exact path="/perfil" component={ Perfil } />
       <Route exact path="/productos" component={ Productos } />
       <Route exact path="/compras" component={ Compras } />
       <Route exact path="/addProducto" component={ addProducto } />

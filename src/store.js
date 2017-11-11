@@ -7,6 +7,7 @@ import Headercliente from './components/Headers/cliente';
 
 const Header = (state = Headeranonimo, action) => {
 	if(action.type === "LOGIN"){
+
 		if(action.role === "Administrador"){
 			return Headeradministrador;
 		}else if(action.role === "Empleado"){
@@ -28,6 +29,20 @@ const Role = (state = "Anonimo", action) => {
 }
 
 const User = (state = null, action) => {
+if(action.type === "LOGOUT"){
+		return null;
+	}else if(action.type === "LOGIN"){
+		return action.user;
+	}
+	return state;
+}
+
+const inicialPerfil ={
+	email: '',
+	name: ''
+}
+
+const Perfil = (state = inicialPerfil, action) => {
 if(action.type === "LOGOUT"){
 		return null;
 	}else if(action.type === "LOGIN"){
