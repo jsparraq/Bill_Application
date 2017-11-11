@@ -33,7 +33,10 @@ const ADDUSER = Usuario => {
             });
             conexion.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
             dispatch({
-              type:"SUCCESS"
+              type: "LOGIN",
+              user: conexion.auth().currentUser,
+              auth: true,
+              role: Usuario.role
             });
           }else{
             conexion.database().ref("passwords/").orderByChild("Admin").once("child_added", function(snapshot) {
@@ -44,11 +47,12 @@ const ADDUSER = Usuario => {
                   role: Usuario.role
                 });
                 conexion.auth().signInWithEmailAndPassword(Usuario.email, Usuario.password);
-                const usuarioaux = {
-                  email: Usuario.email,
-                  password: Usuario.password
-                }
-                return LOGIN(usuarioaux);
+                dispatch({
+                  type: "LOGIN",
+                  user: conexion.auth().currentUser,
+                  auth: true,
+                  role: Usuario.role
+                });
               }else{
                 dispatch({
                   type: "ERROR",
