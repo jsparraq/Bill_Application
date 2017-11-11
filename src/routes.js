@@ -3,15 +3,19 @@ import {Route, Switch} from 'react-router-dom';
 
 //Components
 import App from './components/App';
+//Producto
 import Productos from './components/Productos';
+import actualizareproductos from './components/Productos/actualizar';
+import Removeproducto from './components/Productos/eliminar';
+
 import Principal from './components/Principal';
 import Compras from './components/Compras';
 import addProducto from './components/producto';
 import Page404 from './components/Page404';
 import Registro from './components/Sign_up';
 import Log_in from './components/Log_in';
-import Removeproducto from './components/Productos/eliminar';
-import actualizareproducto from './components/Productos/actualizar';
+
+
 
 const AppRoutes = () =>
   <App>
@@ -22,7 +26,7 @@ const AppRoutes = () =>
       <Route exact path="/removeProducto" component={ Removeproducto } />
       <Route exact path="/Registro" component = { Registro }/>
       <Route exact path="/principal" component={ Principal } />
-      <Route exact path="/updateproducto" component={ actualizareproducto } />
+      <Route exact path="/updateproductos" component={ actualizareproductos } />
       <Route exact path="/Log_in" component={ Log_in } />
       <Route exact path="/" component={ Principal } />
       <Route exact component={Page404} />

@@ -20,7 +20,7 @@ const Headeradministrador = ({ LOGOUT }) => {
             <NavDropdown title="Producto" id="basic-nav-dropdown">
               <LinkContainer to ='./addProducto' ><MenuItem >Agregar producto</MenuItem></LinkContainer>
               <LinkContainer to ='./removeProducto' ><MenuItem >Eliminar producto</MenuItem></LinkContainer>
-              <LinkContainer to ='./updateproducto' ><MenuItem >Editar producto</MenuItem></LinkContainer>
+              <LinkContainer to ='./updateproductos' ><MenuItem >Editar producto</MenuItem></LinkContainer>
             </NavDropdown>
           </Nav>
           <Nav pullRight>

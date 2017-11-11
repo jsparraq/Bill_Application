@@ -74,13 +74,22 @@ const REMOVEPRODUCTO = (producto) => {
     firebase.database().ref('productos/' + producto.nombre).remove();
     firebase.storage().ref('Productos/' + producto.nombre).delete();
     dispatch({
-              type:"SUCCESS"
-            });
+      type:"SUCCESS"
+    });
   }
 }
 
-const UPDATEPRODUCTO = (producto) => {
-  return producto;
+const UPDATEPRO = (producto) => {
+  return {
+    type:"UPDATE",
+    producto
+  }
 }
 
-export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO, UPDATEPRODUCTO };
+const UPDATESPRODUCTO = (producto) => {
+  return {
+    type:"SUCCESS"
+  }
+}
+
+export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO, UPDATEPRO, UPDATESPRODUCTO };
