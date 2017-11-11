@@ -28,9 +28,10 @@ class Perfil extends Component {
     return (
       <div className="Perfil">
         <div className = "titulo text-center">
-          <h3>Perfil</h3>
+          <h3>{this.props.User.email}</h3>
         </div>
         <h1>Perfil</h1>
+        
       </div>
     );
   }

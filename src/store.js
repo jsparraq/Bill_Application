@@ -5,14 +5,22 @@ import Headeranonimo from './components/Headers/anonimo';
 import Headerempleado from './components/Headers/empleado';
 import Headercliente from './components/Headers/cliente';
 
+/**
+ * [Header description]
+ * @param {[type]} [state=Headeranonimo] [description]
+ * @param {[type]} action                [description]
+ */
 const Header = (state = Headeranonimo, action) => {
 	if(action.type === "LOGIN"){
 
 		if(action.role === "Administrador"){
+			console.log("LOGIN_AD");
 			return Headeradministrador;
 		}else if(action.role === "Empleado"){
+			console.log("LOGIN_EM");
 			return Headerempleado;
 		}else{
+			console.log("LOGIN");
 			return Headercliente;
 		}
 	}else if(action.type === "LOGOUT"){
@@ -21,13 +29,26 @@ const Header = (state = Headeranonimo, action) => {
 	return state;
 }
 
+/**
+ * [Role description]
+ * @param {String} [state="Anonimo"] [description]
+ * @param {[type]} action            [description]
+ */
 const Role = (state = "Anonimo", action) => {
  if(action.type === "LOGIN" ){
 		return action.role;
+	}else if(action.type === "LOGOUT"){
+		return "Anonimo";
 	}
 	return state;
 }
 
+
+/**
+ * [User description]
+ * @param {[type]} [state=null] [description]
+ * @param {[type]} action       [description]
+ */
 const User = (state = null, action) => {
 if(action.type === "LOGOUT"){
 		return null;
@@ -37,19 +58,7 @@ if(action.type === "LOGOUT"){
 	return state;
 }
 
-const inicialPerfil ={
-	email: '',
-	name: ''
-}
 
-const Perfil = (state = inicialPerfil, action) => {
-if(action.type === "LOGOUT"){
-		return null;
-	}else if(action.type === "LOGIN"){
-		return action.user;
-	}
-	return state;
-}
 
 const RedirectSign = (state = null, action) => {
 	if (action.type === "SUCCESS"){
@@ -62,6 +71,12 @@ const RedirectSign = (state = null, action) => {
 	return state;
 }
 
+
+/**
+ * [Message description]
+ * @param {[type]} [state=null] [description]
+ * @param {[type]} action       [description]
+ */
 const Message  = (state = null, action) => {
 	if(action.type === "ERROR"){
 		return action.message;
@@ -69,6 +84,12 @@ const Message  = (state = null, action) => {
 	return state;
 };
 
+
+/**
+ * [Popup description]
+ * @param {[type]} [state=null] [description]
+ * @param {[type]} action       [description]
+ */
 const Popup  = (state = null, action) => {
 	if(action.type === "ERROR"){
 		return  true;
@@ -78,14 +99,37 @@ const Popup  = (state = null, action) => {
 	return state;
 };
 
+
+/**
+ * [Productos description]
+ * @param {Array}  [state=[]] [description]
+ * @param {[type]} action     [description]
+ */
 const Productos = (state = [], action) => {
 	if(action.type === "MOSTRAR"){
-		return action.productos
+		return action.productos;
 	}
 	return state;
 };
 
+/**
+ * [Producto description]
+ * @param {[type]} [state=null] [description]
+ * @param {[type]} action       [description]
+ */
+const Producto = (state = null,action) => {
+	if(action.type === "UPDATE"){
+		return action.producto;
+	}
+	return state;
+}
 
+
+/**
+ * [logger description]
+ * @param  {[type]} store [description]
+ * @return {[type]}       [description]
+ */
 const logger = store => next => action => {
 	console.log('dispatching', action);
 	let result = next(action);
@@ -93,4 +137,4 @@ const logger = store => next => action => {
 	return result;
 }
 
-export default createStore(combineReducers({Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
+export default createStore(combineReducers({Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
