@@ -28,14 +28,23 @@ class Perfil extends Component {
     const nombre =this.nameProductInput.value;
     const password = this.passwordProductInput.value;
     const Cpassword = this.CpasswordProductInput.value;
+    const img1 = this.imageInput.value;
+    const img = this.imageInput.files[0];
     this.perfilForm.reset();
-    const usuario = {
-      nombre,
-      password,
-      Cpassword
-    }
-    this.props.EDITPERFIL(usuario);
+    let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(!allowedExtensions.exec(img1)&&img1!==''){
+      this.props.ERROR("El archivo que adjunto no es una imagen o un gif");
+    }else{
+      const usuario = {
+        nombre,
+        password,
+        Cpassword,
+        img
+      }
+
+      this.props.EDITPERFIL(usuario);
   }
+}
 
   render() {
     return (
@@ -45,6 +54,12 @@ class Perfil extends Component {
         </div>
         <div style = {loginStyles}>
           <form ref = {(form) => {this.perfilForm = form}}>
+            <FormGroup >
+              <img src = {this.props.User.photoURL} className = "img" alt= {this.props.User.photoURL} />
+              <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
+              <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
+              <FormControl.Feedback />
+            </FormGroup>
             <FormGroup  >
               <ControlLabel><Label>Nombre de Usuario</Label></ControlLabel>
               <FormControl type = "text" placeholder = {this.props.User.displayName} inputRef = {(input) => {this.nameProductInput = input}}/>

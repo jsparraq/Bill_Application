@@ -45,7 +45,7 @@ const Role = (state = "Anonimo", action) => {
  * @param {[type]} [state=null] [description]
  * @param {[type]} action       [description]
  */
-const User = (state = null, action) => {
+const User = (state =null, action) => {
 if(action.type === "LOGOUT"){
 		return null;
 	}else if(action.type === "LOGIN"){

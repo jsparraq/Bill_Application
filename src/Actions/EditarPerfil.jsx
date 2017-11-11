@@ -1,5 +1,6 @@
 import {app as conexion} from '../components/conexion';
 
+
 const EDITPERFIL = Usuario => {
   return dispatch => {
     let user = conexion.auth().currentUser;
@@ -9,6 +10,7 @@ const EDITPERFIL = Usuario => {
         message: "Usuario no ingresado"
       });
     }else {
+
       if(Usuario.nombre!==''){
           user.updateProfile({
             displayName: Usuario.nombre
@@ -31,7 +33,7 @@ const EDITPERFIL = Usuario => {
                     });
         });
         }
-        if(Usuario.password!=='' && Usuario.password === Usuario.Cpassword){
+      if(Usuario.password!=='' && Usuario.password === Usuario.Cpassword){
             user.updatePassword(Usuario.password).then(function() {
             })
             .catch(function(error) {
@@ -42,10 +44,30 @@ const EDITPERFIL = Usuario => {
               });
             });
           }
+      if(Usuario.img!==null){
+              const storage = conexion.storage().ref(`users/${user.uid}`);
+              const task = storage.put(Usuario.img);
+              task.on('state_changed' , snapshot => {
+                  }, error => {
+                    dispatch({
+                      type: "ERROR",
+                      message: error.message
+                    });
+                  }, () => {
+                      user.updateProfile({
+                              photoURL: task.snapshot.downloadURL
+                            }).catch(function(error) {
+                                // Handle Errors here.
+                                dispatch({
+                                  type: "ERROR",
+                                  message: error.message
+                                });
+                            });
+                    });
+          }
 
           return conexion.database().ref('users/').once("child_added",
             function(snapshot) {
-              console.log(snapshot.val());
                         dispatch({
                           type: "LOGIN",
                           user: user,
