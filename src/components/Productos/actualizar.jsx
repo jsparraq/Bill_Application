@@ -1,6 +1,5 @@
 //Dependencias
 import React,{ Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //Recursos
@@ -9,7 +8,8 @@ import Popup from '../Extras/Pop-up';
 
 //Actions
 import { UPDATEPRO  } from '../../Actions/producto';
-import { GETPRODUCTS } from '../../Actions/producto';
+import { UPDATESPRODUCTO } from '../../Actions/producto';
+import { ERROR } from '../../Actions/error';
 
 
 const loginStyles = {
@@ -22,6 +22,52 @@ const loginStyles = {
 };
 
 class ActualizarProductos extends Component {
+  constructor(){
+    super();
+    this.handleAddProduct = this.handleAddProduct.bind(this);
+  }
+
+  handleAddProduct(){
+    let name = this.nameProductInput.value.toLowerCase();
+    if(name === ""){
+      name = this.props.Producto.nombre.toLowerCase();
+    }
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    let price = this.priceProductInput.value;
+    if(price === ""){
+      price = this.props.Producto.precio;
+    }
+    let desc = this.descProductInput.value;
+    if(desc === ""){
+      desc = this.props.Producto.descripcion.toLowerCase();
+    }
+    const img1 = this.imageInput.value;
+    const img = this.imageInput.files[0];
+    let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(!img){
+      const product = {
+        name,
+        price,
+        desc,
+        imagen: null
+      }
+
+      this.props.UPDATESPRODUCTO(product);
+    }else if(!allowedExtensions.exec(img1) && img){
+      this.props.ERROR("El archivo que adjunto no es una imagen o un gif");
+    }else{
+      const product = {
+        name,
+        price,
+        desc,
+        imagen: img
+      }
+      this.props.UPDATESPRODUCTO(product);
+
+    }
+  }
+
+
 
   render() {
     return (
@@ -103,8 +149,10 @@ const mapDispatchToProps = dispatch => {
   return {
     UPDATEPRO(producto){
       dispatch(UPDATEPRO(producto));
-    },GETPRODUCTS(){
-      dispatch(GETPRODUCTS());
+    },UPDATESPRODUCTO(producto){
+      dispatch(UPDATESPRODUCTO(producto));
+    },ERROR(message){
+      dispatch(ERROR(message));
     }
   }
 }
