@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //Recursos
-import { Button, Glyphicon,Table, Panel, Grid, Row, Col, FormGroup, ControlLabel, Label, FormControl } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, Label, FormControl } from 'react-bootstrap';
 import Popup from '../Extras/Pop-up';
 
 import { EDITPERFIL } from '../../Actions/EditarPerfil';

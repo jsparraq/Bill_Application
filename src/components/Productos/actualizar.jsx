@@ -1,6 +1,7 @@
 //Dependencias
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 //Recursos
 import { Button, Glyphicon,Table, Panel, Grid, Row, Col, FormGroup, ControlLabel, Label, FormControl } from 'react-bootstrap';
@@ -46,10 +47,12 @@ class ActualizarProductos extends Component {
     let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
     if(!img){
       const product = {
+        namev: this.props.Producto.nombre,
         name,
         price,
         desc,
-        imagen: null
+        imagen: this.props.Producto.imagen,
+        img: true
       }
 
       this.props.UPDATESPRODUCTO(product);
@@ -57,10 +60,12 @@ class ActualizarProductos extends Component {
       this.props.ERROR("El archivo que adjunto no es una imagen o un gif");
     }else{
       const product = {
+        namev: this.props.Producto.nombre,
         name,
         price,
         desc,
-        imagen: img
+        imagen: img,
+        img: true
       }
       this.props.UPDATESPRODUCTO(product);
 
@@ -70,6 +75,11 @@ class ActualizarProductos extends Component {
 
 
   render() {
+
+    if(this.props.redirect === true){
+      return <Redirect to = '/principal' />
+    }
+
     return (
       <Grid>
           <Row>
