@@ -23,7 +23,6 @@ const loginStyles = {
 class AddProducto extends Component{
   constructor(){
     super();
-
     this.handleAddProduct = this.handleAddProduct.bind(this);
   }
 

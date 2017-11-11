@@ -87,6 +87,11 @@ const UPDATEPRO = (producto) => {
 }
 
 const UPDATESPRODUCTO = (producto) => {
+  if(producto.imagen === null){
+    
+  }else{
+
+  }
   return {
     type:"SUCCESS"
   }

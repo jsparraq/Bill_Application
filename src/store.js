@@ -12,15 +12,11 @@ import Headercliente from './components/Headers/cliente';
  */
 const Header = (state = Headeranonimo, action) => {
 	if(action.type === "LOGIN"){
-		console.log("LOGIN");
 		if(action.role === "Administrador"){
-			console.log("LOGIN_AD");
 			return Headeradministrador;
 		}else if(action.role === "Empleado"){
-			console.log("LOGIN_EM");
 			return Headerempleado;
 		}else{
-			console.log("LOGIN");
 			return Headercliente;
 		}
 	}else if(action.type === "LOGOUT"){
