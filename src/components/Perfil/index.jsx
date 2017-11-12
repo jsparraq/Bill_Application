@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Button, Glyphicon,Table, Panel, Grid, Row, Col, FormGroup, ControlLabel, Label, FormControl } from 'react-bootstrap';
 import Popup from '../Extras/Pop-up';
 
-import { EDITPERFIL } from '../../Actions/EditarPerfil';
+import { EDITPERFIL } from '../../Actions/UserActions';
 import { ERROR } from '../../Actions/error';
 
 
