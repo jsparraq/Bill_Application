@@ -1,4 +1,4 @@
-import { INICIO } from '../../../Actions/principal';
+import { INICIO } from '../../Actions/principal';
 import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();

@@ -1,4 +1,4 @@
-import { ERROR } from '../../../Actions/error';
+import { ERROR } from '../../Actions/error';
 import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();

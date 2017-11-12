@@ -6,9 +6,7 @@ import Productos from '../../../components/Productos';
 const mockStore = configureStore();
 
 it('Renderiza sin productos', () => {
-
   const store = mockStore({Productos: []});
-
   const wrapper = render(<Productos store = {store}/>);
   expect(wrapper.find(".Producto").length).toBe(0);
 });

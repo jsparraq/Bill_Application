@@ -45,24 +45,33 @@ class Perfil extends Component {
       this.props.EDITPERFIL(usuario);
   }
 }
+displayName(){
+   this.props.User.displayName;
+
+
+}
+
+
 
   render() {
     return (
       <div className="Perfil">
-        <div className = "titulo text-center">
+        <div className = "titulo">
           <h3>Perfil</h3>
         </div>
-        <div style = {loginStyles}>
-          <form ref = {(form) => {this.perfilForm = form}}>
+        <div className = "formula" style = {loginStyles}>
+          <form className = "formula" ref = {(form) => {this.perfilForm = form}}>
             <FormGroup >
-              <img src = {this.props.User.photoURL} className = "img" alt= {this.props.User.photoURL} />
+              <img src = {(this.props.User.photoURL!==null)?this.props.User.photoURL:""}
+                className = "img" alt= {(this.props.User.photoURL!==null)?this.props.User.photoURL:""} />
               <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
               <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
               <FormControl.Feedback />
             </FormGroup>
             <FormGroup  >
               <ControlLabel><Label>Nombre de Usuario</Label></ControlLabel>
-              <FormControl type = "text" placeholder = {this.props.User.displayName} inputRef = {(input) => {this.nameProductInput = input}}/>
+              <FormControl type = "text" placeholder = {(this.props.User.displayName!==null)?this.props.User.displayName:"nada"}
+                inputRef = {(input) => {this.nameProductInput = input}}/>
               <FormControl.Feedback />
             </FormGroup>
             <FormGroup >
@@ -76,7 +85,7 @@ class Perfil extends Component {
               <FormControl.Feedback />
             </FormGroup>
             <FormGroup className = "text-center">
-              <Button  ref = "target" bsStyle="success" type="submit" onClick={this.EditPerfil.bind(this)}> Actualizar el Perfil </Button>
+              <Button id = "buttonS" ref = "target" bsStyle="success" type="submit" onClick={this.EditPerfil.bind(this)}> Actualizar el Perfil </Button>
               <Popup/>
             </FormGroup>
           </form>
