@@ -36,7 +36,6 @@ const ADDPRODUCT = (producto) => {
             dispatch({
               type:"SUCCESS"
             })
-
           });
         }
       });
@@ -87,13 +86,43 @@ const UPDATEPRO = (producto) => {
 }
 
 const UPDATESPRODUCTO = (producto) => {
-  if(producto.imagen === null){
-    
-  }else{
+  return dispatch => {
+    if(producto.img){
+      firebase.database().ref('productos/' + producto.namev).remove();
+      firebase.database().ref('productos/' + producto.name).set({
+        descripcion: producto.desc,
+        precio: producto.price,
+        nombre: producto.name,
+        image: producto.imagen
+      });
+      dispatch({
+        type: "SUCCESS"
+      });
+    }else{
+      firebase.database().ref('productos/' + producto.namev).remove();
+      firebase.storage().ref('Productos/' + producto.namev).delete();
+      const storage = firebase.storage().ref(`Productos/${producto.name}`);
+      const task = storage.put(producto.img);
+      task.on('state_changed' , snapshot => {
+      }, error => {
+        dispatch({
+          type: "ERROR",
+          message: error.message
+        });
+      }, () => {
+        const product = {
+          nombre: producto.namev,
+          precio: producto.price,
+          descripcion: producto.desc,
+          image: task.snapshot.downloadURL
+        };
+        firebase.database().ref('productos/' + producto.namev).set(product);
+        dispatch({
+          type:"SUCCESS"
+        })
 
-  }
-  return {
-    type:"SUCCESS"
+      });
+    }
   }
 }
 
