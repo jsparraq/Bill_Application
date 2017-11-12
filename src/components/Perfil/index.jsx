@@ -45,14 +45,6 @@ class Perfil extends Component {
       this.props.EDITPERFIL(usuario);
   }
 }
-displayName(){
-   this.props.User.displayName;
-
-
-}
-
-
-
   render() {
     return (
       <div className="Perfil">
