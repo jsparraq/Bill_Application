@@ -38,7 +38,7 @@ class EliminarProductos extends Component {
         <Table fill style = {loginStyles}>
           <tbody>
             {this.props.productos.map((producto,key) =>
-              <tr key = {key}>
+              <tr key = {key} className = "Producto">
                 <td> {producto.nombre}</td>
                 <td className ="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick = {() => this.props.REMOVEPRODUCTO(producto)}> <Glyphicon glyph="trash"/></Button></td>
               </tr>

@@ -16,7 +16,6 @@ const Headeradministrador = ({ LOGOUT }) => {
           <Nav>
             <LinkContainer to ='./principal' ><NavItem>Principal</NavItem></LinkContainer>
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
-            <LinkContainer to ='./factura' ><NavItem>Factura</NavItem></LinkContainer>
             <NavDropdown title="Producto" id="basic-nav-dropdown">
               <LinkContainer to ='./addProducto' ><MenuItem >Agregar producto</MenuItem></LinkContainer>
               <LinkContainer to ='./removeProducto' ><MenuItem >Eliminar producto</MenuItem></LinkContainer>

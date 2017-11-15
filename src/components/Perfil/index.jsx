@@ -56,7 +56,7 @@ class Perfil extends Component {
             <FormGroup >
               <img src = {(this.props.User.photoURL!==null)?this.props.User.photoURL:""}
                 className = "img" alt= {(this.props.User.photoURL!==null)?this.props.User.photoURL:""} />
-              <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
+              <ControlLabel><Label>Imagen de perfil</Label></ControlLabel>
               <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
               <FormControl.Feedback />
             </FormGroup>

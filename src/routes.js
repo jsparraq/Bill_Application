@@ -9,7 +9,6 @@ import actualizareproductos from './components/Productos/actualizar';
 import Removeproducto from './components/Productos/eliminar';
 
 import Principal from './components/Principal';
-import Compras from './components/Compras';
 import addProducto from './components/producto';
 import Page404 from './components/Page404';
 import Perfil from './components/Perfil';
@@ -24,7 +23,6 @@ const AppRoutes = () =>
       <Route exact path="/factura" component={ Factura } />
       <Route exact path="/perfil" component={ Perfil } />
       <Route exact path="/productos" component={ Productos } />
-      <Route exact path="/compras" component={ Compras } />
       <Route exact path="/addProducto" component={ addProducto } />
       <Route exact path="/removeProducto" component={ Removeproducto } />
       <Route exact path="/Registro" component = { Registro }/>

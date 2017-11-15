@@ -10,8 +10,8 @@ class Footer extends Component {
   render (){
     return (
       <div className = "Footer">
-        <p>Hecho por Simon Zea</p>
-        <p>Hecho por Sebastian Parra</p>
+        <p className = "Simon" >Hecho por Simon Zea</p>
+        <p className = "Sebastian" >Hecho por Sebastian Parra</p>
       </div>
     );
   }
