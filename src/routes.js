@@ -15,12 +15,13 @@ import Page404 from './components/Page404';
 import Perfil from './components/Perfil';
 import Registro from './components/Sign_up';
 import Log_in from './components/Log_in';
-
+import Factura from './components/Factura';
 
 
 const AppRoutes = () =>
   <App>
     <Switch>
+      <Route exact path="/factura" component={ Factura } />
       <Route exact path="/perfil" component={ Perfil } />
       <Route exact path="/productos" component={ Productos } />
       <Route exact path="/compras" component={ Compras } />
