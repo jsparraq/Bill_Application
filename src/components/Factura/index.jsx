@@ -8,17 +8,17 @@ import { ERROR } from '../../Actions/error';
 const loginStyles = {
   Galeria1 : {
     'display': 'flex',
-    'flex-wrap': 'wrap',
-    'max-width': '1100px',
-    'margin-right': 'auto',
-    'margin-left': 'auto'
+    'flexWrap': 'wrap',
+    'maxWidth': '1100px',
+    'marginRight': 'auto',
+    'marginLeft': 'auto'
   },
   Producto1 : {
-    'box-sizing': 'border-box',
+    'boxSizing': 'border-box',
     'margin': '1em',
     'overflow': 'hidden',
     'width': '150px',
-    'border-radius': '8px',
+    'borderRadius': '8px',
     'position': 'relative'
   },
   footer: {
@@ -39,8 +39,8 @@ class Factura extends Component {
           <Row>
             <Col sm={8}>
               <div className = "Galeria" style = {loginStyles.Galeria1}>
-                {this.props.products.map(product =>
-                  <div className="thumbnail" key={product.id} style = {loginStyles.Producto1}>
+                {this.props.products.map((product,key) =>
+                  <div className="thumbnail" key={key} style = {loginStyles.Producto1}>
                     <img src={product.imagen} alt={product.nombre} />
                     <div className="caption">
                       <h4>{product.nombre}</h4>
@@ -56,8 +56,8 @@ class Factura extends Component {
               <Panel header="Shopping Cart">
                 <Table fill>
                   <tbody>
-                    {this.props.Cart.map(product =>
-                      <tr key={product.id}>
+                    {this.props.Cart.map((product,key) =>
+                      <tr key={key}>
                         <td>{product.nombre}</td>
                         <td className="text-right">${product.precio}</td>
                         <td className="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick={() => this.props.REMOVETOCART(product)}><Glyphicon glyph="trash" /></Button></td>

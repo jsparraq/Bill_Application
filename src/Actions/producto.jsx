@@ -51,12 +51,11 @@ const GETPRODUCTS = () => {
     return firebase.database().ref().child("productos").once("value", function(snapshot) {
       let productos = [];
       snapshot.forEach(function(child) {
-
         const producto = {
           nombre: child.val().nombre,
           precio: child.val().precio,
           imagen: child.val().image,
-          descripcion: child.val().descripcion
+          descripcion: child.val().descripcion,
         };
         productos = productos.concat(producto);
       });
