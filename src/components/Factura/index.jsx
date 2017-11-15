@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Glyphicon, Panel, Table,Grid,Row,Col } from 'react-bootstrap';
+import { Button, Glyphicon, Panel, Table, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { ADDTOCART, REMOVETOCART } from '../../Actions/producto';
 import { ERROR } from '../../Actions/error';
+import { USERS } from '../../Actions/UserActions';
 
 const loginStyles = {
   Galeria1 : {
@@ -27,9 +28,9 @@ const loginStyles = {
 };
 
 class Factura extends Component {
-  constructor() {
-    super();
-    this.addToCart = this.addToCart.bind(this);
+
+  componentWillMount(){
+    this.props.USERS();
   }
 
   render() {
@@ -45,7 +46,7 @@ class Factura extends Component {
                     <div className="caption">
                       <h4>{product.nombre}</h4>
                       <p>
-                        <Button bsStyle="primary" onClick={() => this.props.ADDTOCART(product)} role="button" disabled={product.inventory <= 0}>${product.price} <Glyphicon glyph="shopping-cart" /></Button>
+                        <Button bsStyle="primary" onClick={() => this.props.ADDTOCART(product,this.props.cantidad)} role="button" disabled={product.inventory <= 0}>${product.price} <Glyphicon glyph="shopping-cart" /></Button>
                       </p>
                     </div>
                   </div>
@@ -58,16 +59,28 @@ class Factura extends Component {
                   <tbody>
                     {this.props.Cart.map((product,key) =>
                       <tr key={key}>
-                        <td>{product.nombre}</td>
-                        <td className="text-right">${product.precio}</td>
-                        <td className="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick={() => this.props.REMOVETOCART(product)}><Glyphicon glyph="trash" /></Button></td>
+                        <td>{product.product.nombre}</td>
+                        <td className="text-right">${product.product.precio}</td>
+                        <td className="text-right"><Button bsSize="xsmall" bsStyle="danger" onClick={() => this.props.REMOVETOCART(product,key)}><Glyphicon glyph="trash" /></Button></td>
                       </tr>
                     )}
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colSpan="4" style={loginStyles.footer}>
-                        Total: ${this.props.Cart.reduce((sum, product) => sum + Number(product.precio), 0)}
+                        Total: ${this.props.Cart.reduce((sum, product) => sum + Number(product.product.precio), 0)}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="4" >
+                        <FormGroup controlId="formControlsSelect">
+                          <ControlLabel> Cliente</ControlLabel>
+                          <FormControl componentClass="select" placeholder="select">
+                            {this.props.Usuarios.map((usuario, key) =>
+                              <option key = {key} value= {usuario.correo}> {usuario.correo} </option>
+                            )}
+                          </FormControl>
+                        </FormGroup>
                       </td>
                     </tr>
                   </tfoot>
@@ -79,29 +92,32 @@ class Factura extends Component {
       </div>
     );
   }
-
-  addToCart(product) {
-
-  }
 }
+
+
 
 const mapStateToProps = state => {
   return {
     products: state.Productos,
-    Cart: state.Cart
+    Cart: state.Cart,
+    cantidad: state.Cart.length,
+    Usuarios: state.Usuarios
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    ADDTOCART(producto){
-      dispatch(ADDTOCART(producto))
+    ADDTOCART(producto,cantidad){
+      dispatch(ADDTOCART(producto,cantidad))
     },
     ERROR(message){
       dispatch(ERROR(message));
     },
-    REMOVETOCART(producto){
-      dispatch(REMOVETOCART(producto))
+    REMOVETOCART(producto,cantidad){
+      dispatch(REMOVETOCART(producto,cantidad))
+    },
+    USERS(){
+      dispatch(USERS())
     }
   }
 }

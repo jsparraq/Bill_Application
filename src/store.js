@@ -14,7 +14,7 @@ const Cart = (state = [], action) => {
 	if(action.type === "ADDTOCART"){
 		return state.concat(action.producto);
 	}if(action.type === "REMOVETOCART"){
-		return state.filter(producto => producto.nombre !== action.producto.nombre);
+		return state.filter(producto => producto.cantidad !== action.producto.cantidad);
 	}
 	return state;
 }
@@ -123,6 +123,18 @@ const Productos = (state = [], action) => {
 };
 
 /**
+ * [Productos description]
+ * @param {Array}  [state=[]] [description]
+ * @param {[type]} action     [description]
+ */
+const Usuarios = (state = [], action) => {
+	if(action.type === "MOSTRARUSUARIOS"){
+		return action.users;
+	}
+	return state;
+};
+
+/**
  * [Producto description]
  * @param {[type]} [state=null] [description]
  * @param {[type]} action       [description]
@@ -147,4 +159,4 @@ const logger = store => next => action => {
 	return result;
 }
 
-export default createStore(combineReducers({Cart, Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
+export default createStore(combineReducers({Usuarios, Cart, Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));

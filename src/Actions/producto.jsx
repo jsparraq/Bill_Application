@@ -125,14 +125,22 @@ const UPDATESPRODUCTO = (producto) => {
   }
 }
 
-const ADDTOCART = (producto) => {
+const ADDTOCART = (product,cantidad) => {
+  const producto = {
+    product,
+    cantidad
+  };
   return {
     type: "ADDTOCART",
     producto
   }
 }
 
-const REMOVETOCART = (producto) => {
+const REMOVETOCART = (product,cantidad) => {
+  const producto = {
+    product,
+    cantidad
+  };
   return {
     type: "REMOVETOCART",
     producto

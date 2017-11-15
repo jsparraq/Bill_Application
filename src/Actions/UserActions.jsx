@@ -222,4 +222,22 @@ const EDITPERFIL = Usuario => {
    }
 }
 
-export { ADDUSER, LOGIN, LOGOUT,EDITPERFIL };
+const USERS = () => {
+  return dispatch => {
+    return conexion.database().ref().child("users").once("value", function(snapshot) {
+      let users = [];
+      snapshot.forEach(function(child) {
+        const usuario = {
+          correo: child.val().correo
+        };
+        users = users.concat(usuario);
+      });
+      dispatch({
+        type: "MOSTRARUSUARIOS",
+        users
+      })
+    });
+  }
+}
+
+export { ADDUSER, LOGIN, LOGOUT, EDITPERFIL, USERS };
