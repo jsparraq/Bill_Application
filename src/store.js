@@ -6,6 +6,20 @@ import Headerempleado from './components/Headers/empleado';
 import Headercliente from './components/Headers/cliente';
 
 /**
+ * [Cart description]
+ * @param {Array}  [state=[]] [description]
+ * @param {[type]} action     [description]
+ */
+const Cart = (state = [], action) => {
+	if(action.type === "ADDTOCART"){
+		return state.concat(action.producto);
+	}if(action.type === "REMOVETOCART"){
+		return state.filter(producto => producto.nombre !== action.producto.nombre);
+	}
+	return state;
+}
+
+/**
  * [Header description]
  * @param {[type]} [state=Headeranonimo] [description]
  * @param {[type]} action                [description]
@@ -133,4 +147,4 @@ const logger = store => next => action => {
 	return result;
 }
 
-export default createStore(combineReducers({Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
+export default createStore(combineReducers({Cart, Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));

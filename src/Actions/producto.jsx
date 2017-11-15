@@ -126,4 +126,18 @@ const UPDATESPRODUCTO = (producto) => {
   }
 }
 
-export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO, UPDATEPRO, UPDATESPRODUCTO };
+const ADDTOCART = (producto) => {
+  return {
+    type: "ADDTOCART",
+    producto
+  }
+}
+
+const REMOVETOCART = (producto) => {
+  return {
+    type: "REMOVETOCART",
+    producto
+  }
+}
+
+export { ADDPRODUCT, GETPRODUCTS, REMOVEPRODUCTO, UPDATEPRO, UPDATESPRODUCTO, ADDTOCART, REMOVETOCART };

@@ -9,7 +9,7 @@
     box-sizing: border-box;
     margin: 1em;
     overflow: hidden;
-    width: calc(100% - 2em);
+    width: calc(100% - 1em);
     transition: width 1s, background 0.3s;
     border-radius: 8px;
     position: relative; }
