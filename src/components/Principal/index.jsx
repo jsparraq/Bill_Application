@@ -11,6 +11,21 @@ class Principal extends Component {
 
   componentWillMount(){
     this.props.INICIO();
+    let hoy = new Date();
+    let dd = hoy.getDate();
+    let mm = hoy.getMonth()+1; //hoy es 0!
+    let yyyy = hoy.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    hoy = mm+'/'+dd+'/'+yyyy;
+    console.log(hoy);
   }
 
   render() {

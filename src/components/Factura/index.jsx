@@ -48,8 +48,23 @@ class Factura extends Component {
         precio: this.props.Cart[i].precio
       }
       carrito.push(producto);
+
     }
-    this.props.CREATEBILL(carrito, user, valor);
+    let hoy = new Date();
+    let dd = hoy.getDate();
+    let mm = hoy.getMonth()+1; //hoy es 0!
+    let yyyy = hoy.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    hoy = mm+'/'+dd+'/'+yyyy;
+    this.props.CREATEBILL(carrito, user, valor, hoy);
   }
 
   render() {
@@ -155,8 +170,8 @@ const mapDispatchToProps = dispatch => {
     USERS(){
       dispatch(USERS())
     },
-    CREATEBILL(Cart, Usuario, Valor){
-      dispatch(CREATEBILL(Cart, Usuario, Valor))
+    CREATEBILL(Cart, Usuario, Valor, Fecha){
+      dispatch(CREATEBILL(Cart, Usuario, Valor, Fecha))
     },
     GETPRODUCTS(){
       dispatch(GETPRODUCTS());

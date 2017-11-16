@@ -44,6 +44,7 @@ class Facturas extends Component {
             <Col sm={6}>
               <div style = {loginStyles}>
                 <h3 className = "text-center">Factura {this.props.factura.Numero}</h3>
+                <p> Fecha {this.props.factura.Fecha}</p>
                 <Panel>
                   <Table fill >
                     <tbody>
