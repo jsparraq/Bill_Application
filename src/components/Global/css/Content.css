@@ -1,4 +1,24 @@
-.Content {
+
+.Content{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/mi-bill.appspot.com/o/EB7.jpg?alt=media&token=c04faffc-ab3d-494e-b9ed-5096faa3a59f');
+  padding: 0px;
   margin: 0px;
-  width: auto;
+  background-size: 100% 100%;
+  max-width: 100%;
+  width: 2000px;
+  height: 700px;
+
 }
+@media screen and (max-width: 590px) {
+    .Principal {
+
+      height:  calc(400px);
+      width: calc(570px);
+        } }
+
+    @media screen and (max-width: 1000px)and (min-width: 590px) {
+    .Principal {
+
+    height:  calc(550px);
+    width: calc(970px);
+          } }

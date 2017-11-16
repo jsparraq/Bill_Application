@@ -47,24 +47,26 @@ class Login extends Component {
     }
 
     return (
-      <div className = "text-center" style = {loginStyles}>
-        <div className = "titulo text-center">
-          <h3>Ingresa</h3>
+      <div className="Perfil">
+        <div className = "text-center" style = {loginStyles}>
+          <div className = "titulo text-center">
+            <h3>Ingresa</h3>
+          </div>
+          <form onSubmit={(event) => {this.authWithEmailPassword(event)}} ref = {(form) => {this.loginFormulario = form}}>
+            <FormGroup >
+              <ControlLabel><Label>Email</Label></ControlLabel>
+              <FormControl id = "email" type = "email" inputRef = {(input) => {this.correoInput = input}}/>
+            </FormGroup>
+            <FormGroup >
+              <ControlLabel><Label>Contraseña</Label></ControlLabel>
+              <FormControl id = "password" type = "password" inputRef = {(input) => {this.contrasenaInput = input}}/>
+            </FormGroup>
+            <FormGroup>
+                <Button ref = "target" type="submit" bsStyle = "success" >Ingresa</Button>
+                <Popup/>
+            </FormGroup>
+          </form>
         </div>
-        <form onSubmit={(event) => {this.authWithEmailPassword(event)}} ref = {(form) => {this.loginFormulario = form}}>
-          <FormGroup >
-            <ControlLabel><Label>Email</Label></ControlLabel>
-            <FormControl id = "email" type = "email" inputRef = {(input) => {this.correoInput = input}}/>
-          </FormGroup>
-          <FormGroup >
-            <ControlLabel><Label>Contraseña</Label></ControlLabel>
-            <FormControl id = "password" type = "password" inputRef = {(input) => {this.contrasenaInput = input}}/>
-          </FormGroup>
-          <FormGroup>
-              <Button ref = "target" type="submit" bsStyle = "success" >Ingresa</Button>
-              <Popup/>
-          </FormGroup>
-        </form>
       </div>
     );
   }

@@ -6,6 +6,11 @@
   max-width: 100%;
   width: 2000px;
   height: 700px;
+  display: flex;
+  flexWrap: wrap;
+  maxWidth: 1100px;
+  marginRight: auto;
+  marginLeft: auto;
 
 }
 @media screen and (max-width: 590px) {

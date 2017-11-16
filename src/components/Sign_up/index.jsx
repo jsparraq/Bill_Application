@@ -88,6 +88,7 @@ class AddUser extends Component{
       return <Redirect to = '/principal' />
     }
     return(
+      <div className = "Perfil">
       <div className = "text-center" style = {loginStyles}>
         <div className = "titulo text-center">
           <h3>Registrate</h3>
@@ -120,6 +121,7 @@ class AddUser extends Component{
           </FormGroup>
         </form>
       </div>
+    </div>
     );
   }
 }

@@ -57,37 +57,39 @@ class AddProducto extends Component{
     }
 
     return(
-      <div style = {loginStyles}>
-        <div className = "titulo text-center">
-          <h3>Agrega un producto</h3>
+      <div className = "Perfil">
+        <div style = {loginStyles}>
+          <div className = "titulo text-center">
+            <h3>Agrega un producto</h3>
+          </div>
+          <br/>
+          <form ref = {(form) => {this.loginForm = form}}>
+            <FormGroup>
+              <ControlLabel><Label>Nombre del producto</Label></ControlLabel>
+              <FormControl type = "text" inputRef = {(input) => {this.nameProductInput = input}}/>
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup>
+              <ControlLabel><Label>Precio del producto</Label></ControlLabel>
+              <FormControl type = "number" inputRef = {(input) => {this.priceProductInput = input}}/>
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup>
+              <ControlLabel><Label>Descripción del producto</Label></ControlLabel>
+              <FormControl componentClass = "textarea" inputRef = {(input) => {this.descProductInput = input}}/>
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup>
+              <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
+              <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup className = "text-center">
+              <Button  ref = "target" bsStyle="success" type="button" onClick={this.handleAddProduct}> Agregar producto </Button>
+              <Popup/>
+            </FormGroup>
+          </form>
         </div>
-        <br/>
-        <form ref = {(form) => {this.loginForm = form}}>
-          <FormGroup>
-            <ControlLabel><Label>Nombre del producto</Label></ControlLabel>
-            <FormControl type = "text" inputRef = {(input) => {this.nameProductInput = input}}/>
-            <FormControl.Feedback />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel><Label>Precio del producto</Label></ControlLabel>
-            <FormControl type = "number" inputRef = {(input) => {this.priceProductInput = input}}/>
-            <FormControl.Feedback />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel><Label>Descripción del producto</Label></ControlLabel>
-            <FormControl componentClass = "textarea" inputRef = {(input) => {this.descProductInput = input}}/>
-            <FormControl.Feedback />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
-            <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
-            <FormControl.Feedback />
-          </FormGroup>
-          <FormGroup className = "text-center">
-            <Button  ref = "target" bsStyle="success" type="button" onClick={this.handleAddProduct}> Agregar producto </Button>
-            <Popup/>
-          </FormGroup>
-        </form>
       </div>
     );
   }

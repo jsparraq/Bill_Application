@@ -11,7 +11,7 @@ import { GETPRODUCTS } from '../../Actions/producto';
 
 const loginStyles = {
   Galeria1 : {
-    'top':'20%',
+
     'display': 'flex',
     'flexWrap': 'wrap',
     'maxWidth': '1100px',
@@ -37,17 +37,20 @@ class Productos extends Component {
   }
   render (){
     return(
-      <div className = "Galeria" style = {loginStyles.Galeria1}>
-        {this.props.productos.map((product,key) =>
-          <div className="thumbnail" key={key} style = {loginStyles.Producto1}>
-            <img src={product.imagen} alt={product.nombre} />
-            <div className="caption">
-              <h4>{product.nombre}</h4>
-              <h5>Precio: ${product.precio}</h5>
-              <h5>{product.descripcion}</h5>
+      <div className="Perfil">
+        <div className = "Galeria" style = {loginStyles.Galeria1}>
+          {this.props.productos.map((product,key) =>
+            <div className="thumbnail" key={key} style = {loginStyles.Producto1}>
+              <img src={product.imagen} alt={product.nombre} />
+              <div className="caption">
+                <h4>{product.nombre}</h4>
+                <h5>Precio: ${product.precio}</h5>
+                <h5>{product.descripcion}</h5>
+              </div>
             </div>
-          </div>
-        )}
+            
+          )}
+        </div>
       </div>
     );
   }

@@ -5,3 +5,10 @@
   height: auto;
   display: block;
 }
+.Perfil{
+  display: flex;
+  flexWrap: wrap;
+  maxWidth: 1100px;
+  marginRight: auto;
+  marginLeft: auto;
+}
