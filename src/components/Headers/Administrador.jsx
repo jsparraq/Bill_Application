@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 //Recursos
 import { Navbar, Nav, NavItem, Button, Glyphicon, NavDropdown, MenuItem } from 'react-bootstrap';
+import './css/Logo.css';
 
 //Actions
 import { LOGOUT } from '../../Actions/UserActions';
@@ -12,14 +13,17 @@ import { LOGOUT } from '../../Actions/UserActions';
 const Headeradministrador = ({ LOGOUT }) => {
     return(
       <Navbar inverse collapseOnSelect>
-        <Navbar.Header>
+        <Navbar.Header className="Navheader">
           <Navbar.Brand>
+            <LinkContainer to ='./principal' >
+            <img className ="Tituloimg" src ="https://firebasestorage.googleapis.com/v0/b/mi-bill.appspot.com/o/Cero%20Papel.PNG?alt=media&token=fe7df350-41e0-4378-84e4-48a72b1be883"
+               alt= "Cargando" to='./principal'/>
+             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to ='./principal' ><NavItem>Principal</NavItem></LinkContainer>
+        <Navbar.Collapse className="Naviga text-left">
+          <Nav >
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
             <NavDropdown title="Producto" id="basic-nav-dropdown">
               <LinkContainer to ='./addProducto' ><MenuItem >Agregar producto</MenuItem></LinkContainer>

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 //Actions
 import { INICIO } from '../../Actions/principal';
 import { GETPRODUCTS } from '../../Actions/producto';
-
+import './css/index.css';
 
 class Principal extends Component {
 
@@ -19,6 +19,7 @@ class Principal extends Component {
     return (
       <div className="Principal">
         <h1>Home</h1>
+      
       </div>
     );
   }

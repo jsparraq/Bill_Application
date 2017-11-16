@@ -1,6 +1,6 @@
-img {
-  max-width: 25%;
-  min-width: 20%;
+.Titulo {
+  max-width: 2%;
+  min-width: 2%;
   border-radius: 8px;
   margin: auto;
   height: auto;
@@ -9,4 +9,9 @@ img {
 
 .fondo {
   background: #7c7680;
+}
+
+.navbar-toggle {
+  position: absolute;
+  right: 0;
 }

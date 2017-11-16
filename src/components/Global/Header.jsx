@@ -12,7 +12,6 @@ class Headergeneral extends Component{
     const Headergen = this.props.Headergen;
     return(
       <div>
-        Titulo
         <Headergen />
       </div>
     );

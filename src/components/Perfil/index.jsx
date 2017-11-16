@@ -8,6 +8,7 @@ import Popup from '../Extras/Pop-up';
 import { EDITPERFIL } from '../../Actions/UserActions';
 import { ERROR } from '../../Actions/error';
 
+import './css/index.css';
 
 const loginStyles = {
   width: "60%",
@@ -54,8 +55,8 @@ class Perfil extends Component {
         <div className = "formula" style = {loginStyles}>
           <form className = "formula" ref = {(form) => {this.perfilForm = form}}>
             <FormGroup >
-              <img src = {(this.props.User.photoURL!==null)?this.props.User.photoURL:""}
-                className = "img" alt= {(this.props.User.photoURL!==null)?this.props.User.photoURL:""} />
+              <img  src = {(this.props.User.photoURL!==null)?this.props.User.photoURL:""}
+                className = "imgt" alt= {(this.props.User.photoURL!==null)?this.props.User.photoURL:""} />
               <ControlLabel><Label>Imagen de perfil</Label></ControlLabel>
               <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
               <FormControl.Feedback />

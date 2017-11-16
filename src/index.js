@@ -14,7 +14,7 @@ import './index.css';
 
 render(
   <Provider store = {store}>
-    <Router>
+    <Router >
       <AppRoutes />
     </Router>
   </Provider>,
