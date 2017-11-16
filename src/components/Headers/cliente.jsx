@@ -21,6 +21,7 @@ const Headeradministrador = ({ LOGOUT }) => {
           <Nav>
             <LinkContainer to ='./principal' ><NavItem>Principal</NavItem></LinkContainer>
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
+            <LinkContainer to ='./facturas' ><NavItem>Compras</NavItem></LinkContainer>
             <LinkContainer to ='./perfil' ><NavItem>Perfil</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>

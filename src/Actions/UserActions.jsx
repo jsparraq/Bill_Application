@@ -57,6 +57,7 @@ const ADDUSER = Usuario => {
                   role: Usuario.role
                 });
               }else{
+                conexion.auth().currentUser.delete();
                 dispatch({
                   type: "ERROR",
                   message: "No coinciden contraseñas"

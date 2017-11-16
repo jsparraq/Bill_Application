@@ -8,8 +8,7 @@ import { Button, Glyphicon,Table, Panel, Grid, Row, Col, FormGroup, ControlLabel
 import Popup from '../Extras/Pop-up';
 
 //Actions
-import { UPDATEPRO  } from '../../Actions/producto';
-import { UPDATESPRODUCTO } from '../../Actions/producto';
+import { UPDATEPRO, GETPRODUCTS, UPDATESPRODUCTO  } from '../../Actions/producto';
 import { ERROR } from '../../Actions/error';
 
 
@@ -26,6 +25,10 @@ class ActualizarProductos extends Component {
   constructor(){
     super();
     this.handleAddProduct = this.handleAddProduct.bind(this);
+  }
+
+  componentWillMount(){
+    this.props.GETPRODUCTS();
   }
 
   handleAddProduct(){
@@ -90,7 +93,7 @@ class ActualizarProductos extends Component {
                     {this.props.productos.map((producto,key) =>
                       <tr key = {key}>
                         <td> {producto.nombre}</td>
-                        <td className ="text-right"><Button bsSize="xsmall" bsStyle="info" onClick = {() => this.props.UPDATEPRO(producto)}><Glyphicon glyph="refresh"/></Button></td>
+                        <td className ="text-right"><Button bsSize="xsmall" bsStyle="info" onClick = {() => this.props.UPDATEPRO(producto)}><Glyphicon glyph="pencil"/></Button></td>
                       </tr>
                     )}
                   </tbody>
@@ -163,6 +166,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(UPDATESPRODUCTO(producto));
     },ERROR(message){
       dispatch(ERROR(message));
+    },
+    GETPRODUCTS(){
+      dispatch(GETPRODUCTS());
     }
   }
 }

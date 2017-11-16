@@ -15,12 +15,13 @@ import Perfil from './components/Perfil';
 import Registro from './components/Sign_up';
 import Log_in from './components/Log_in';
 import Factura from './components/Factura';
-
+import Facturas from './components/Factura/Facturas';
 
 const AppRoutes = () =>
   <App>
     <Switch>
       <Route exact path="/factura" component={ Factura } />
+      <Route exact path="/facturas" component={ Facturas } />
       <Route exact path="/perfil" component={ Perfil } />
       <Route exact path="/productos" component={ Productos } />
       <Route exact path="/addProducto" component={ addProducto } />

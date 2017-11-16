@@ -5,14 +5,12 @@ import { connect } from 'react-redux';
 
 //Actions
 import { INICIO } from '../../Actions/principal';
-import { GETPRODUCTS } from '../../Actions/producto';
 
 
 class Principal extends Component {
 
   componentWillMount(){
     this.props.INICIO();
-    this.props.GETPRODUCTS();
   }
 
   render() {
@@ -35,9 +33,6 @@ const mapDispatchToProps = dispatch => {
   return {
     INICIO(){
       dispatch(INICIO());
-    },
-    GETPRODUCTS(){
-      dispatch(GETPRODUCTS());
     }
   }
 }
