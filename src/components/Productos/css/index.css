@@ -5,62 +5,63 @@
     margin-right: auto;
     margin-left: auto; }
 
-.Producto {
+.Productomenu {
     box-sizing: border-box;
     margin: 1em;
     overflow: hidden;
-    bottom: 20px;
+    top: 20px;
     width: calc(100% - 1em);
+    height: auto;
     transition: width 1s, background 0.3s;
     border-radius: 8px;
     position: relative; }
 @media screen and (min-width: 590px) {
-    .Producto {
-        width: calc(50% - 2em); } }
+    .Productomenu {
+        width: calc(150px - 2em); } }
 @media screen and (min-width: 768px) {
-    .Producto {
-        width: calc(33.33% - 2em); } }
+    .Productomenu {
+        width: calc(150px - 2em); } }
 @media screen and (min-width: 992px) {
-    .Producto {
-        width: calc(25% - 2em); } }
-.Producto .Titulo {
+    .Productomenu {
+        width: calc(150px - 2em); } }
+.Productomenu .Titulo {
     text-transform: uppercase;}
-.Producto img {
+.Productomenu img {
     width: 100%;
     display: block;
     transition: all 0.3s; }
-.Producto .Precio {
+.Productomenu .Precio {
     opacity: 0;
     transition: all 0.1s;
     position: absolute;
     top: 15%;
     width: 150px;}
-.Producto .Descripcion {
+.Productomenu .Descripcion {
     opacity: 0;
     transition: all 0.1s;
     position: absolute;
     top: 35%;
     width: 150px;
     height: 100%;}
-.Producto:hover {
+.Productomenu:hover {
     transform: scale(1.18);
     background: rgba(0, 0, 0, 0.8); }
-.Producto:hover img {
+.Productomenu:hover img {
     transform: translateX(100%); }
-.Producto:hover .Precio {
+.Productomenu:hover .Precio {
     opacity: 1;
     color: #FDFEFE}
-.Producto:hover .Titulo {
+.Productomenu:hover .Titulo {
         opacity: 1;
         color: #FDFEFE}
-.Producto:hover .Descripcion {
+.Productomenu:hover .Descripcion {
     opacity: 1;
     color: #FDFEFE}
-.Producto:hover .Eliminar {
+.Productomenu:hover .Eliminar {
     transform: translateX(100%);}
-.Producto:hover::after {
+.Productomenu:hover::after {
     opacity: 0; }
-.Producto::after {
+.Productomenu::after {
     content: "";
     position: absolute;
     top: 0;

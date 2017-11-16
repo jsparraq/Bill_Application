@@ -3,11 +3,33 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 //Recursos
+import { Panel, Table } from 'react-bootstrap';
 import './css/index.css';
 
 //Actions
 import { GETPRODUCTS } from '../../Actions/producto';
 
+const loginStyles = {
+  Galeria1 : {
+    'top':'20%',
+    'display': 'flex',
+    'flexWrap': 'wrap',
+    'maxWidth': '1100px',
+    'marginRight': 'auto',
+    'marginLeft': 'auto'
+  },
+  Producto1 : {
+    'boxSizing': 'border-box',
+    'margin': '1em',
+    'overflow': 'hidden',
+    'width': '150px',
+    'borderRadius': '8px',
+    'position': 'relative'
+  },
+  footer: {
+    'fontWeight': 'bold'
+  }
+};
 
 class Productos extends Component {
   componentWillMount(){
@@ -15,14 +37,14 @@ class Productos extends Component {
   }
   render (){
     return(
-      <div className = "Galeria">
-        {this.props.productos.map((producto, key) =>
-          <div className = "Producto" key = {key}>
-            <div className = "Titulo text-center"> {producto.nombre}</div>
-            <div>
-              <img src = {producto.imagen} className = "img" alt= {producto.nombre} />
-              <div className = "Precio"> Precio : {producto.precio}</div>
-              <div className = "Descripcion"> {producto.descripcion}</div>
+      <div className = "Galeria" style = {loginStyles.Galeria1}>
+        {this.props.productos.map((product,key) =>
+          <div className="thumbnail" key={key} style = {loginStyles.Producto1}>
+            <img src={product.imagen} alt={product.nombre} />
+            <div className="caption">
+              <h4>{product.nombre}</h4>
+              <h5>Precio: ${product.precio}</h5>
+              <h5>{product.descripcion}</h5>
             </div>
           </div>
         )}
