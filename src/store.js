@@ -14,7 +14,7 @@ const Cart = (state = [], action) => {
 	if(action.type === "ADDTOCART"){
 		return state.concat(action.producto);
 	}if(action.type === "REMOVETOCART"){
-		return state.filter(producto => producto.cantidad !== action.producto.cantidad);
+		return action.productos
 	}
 	return state;
 }

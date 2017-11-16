@@ -12,6 +12,11 @@ import { LOGOUT } from '../../Actions/UserActions';
 const Headeradministrador = ({ LOGOUT }) => {
     return(
       <Navbar inverse collapseOnSelect>
+        <Navbar.Header>
+          <Navbar.Brand>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to ='./principal' ><NavItem>Principal</NavItem></LinkContainer>

@@ -122,7 +122,7 @@ class ActualizarProductos extends Component {
                     <FormControl.Feedback />
                   </FormGroup>
                   <FormGroup className = "text-center">
-                    <Button  ref = "target" bsStyle="success" type="button" onClick={this.handleAddProduct}  disabled = {this.props.enable}> Actualizar producto </Button>
+                    <Button  ref = "target" bsStyle="success" type="button" onClick={this.handleAddProduct}  disabled = {this.props.enable} > Actualizar producto </Button>
                     <Popup/>
                   </FormGroup>
                 </form>
