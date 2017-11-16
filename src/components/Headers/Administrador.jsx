@@ -25,6 +25,7 @@ const Headeradministrador = ({ LOGOUT }) => {
         <Navbar.Collapse className="Naviga text-left">
           <Nav >
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
+            <LinkContainer to ='./facturas' ><NavItem>Compras</NavItem></LinkContainer>
             <NavDropdown title="Producto" id="basic-nav-dropdown">
               <LinkContainer to ='./addProducto' ><MenuItem >Agregar producto</MenuItem></LinkContainer>
               <LinkContainer to ='./removeProducto' ><MenuItem >Eliminar producto</MenuItem></LinkContainer>

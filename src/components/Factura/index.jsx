@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { ADDTOCART, REMOVETOCART, CREATEBILL } from '../../Actions/Cart';
+import { GETPRODUCTS } from '../../Actions/producto';
 import { ERROR } from '../../Actions/error';
 import { USERS } from '../../Actions/UserActions';
 
@@ -31,8 +32,10 @@ const loginStyles = {
 class Factura extends Component {
 
   componentWillMount(){
+    this.props.GETPRODUCTS();
     this.props.USERS();
   };
+
 
   handleBill(){
     console.log("Entro");
@@ -40,9 +43,28 @@ class Factura extends Component {
     let valor = this.props.Cart.reduce((sum, product) => sum + Number(product.precio), 0);
     let carrito = [];
     for (var i = 0; i < this.props.Cart.length; i++) {
-      carrito.push(this.props.Cart[i].nombre);
+      let producto = {
+        nombre: this.props.Cart[i].nombre,
+        precio: this.props.Cart[i].precio
+      }
+      carrito.push(producto);
+
     }
-    this.props.CREATEBILL(carrito, user, valor);
+    let hoy = new Date();
+    let dd = hoy.getDate();
+    let mm = hoy.getMonth()+1; //hoy es 0!
+    let yyyy = hoy.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    hoy = mm+'/'+dd+'/'+yyyy;
+    this.props.CREATEBILL(carrito, user, valor, hoy);
   }
 
   render() {
@@ -119,19 +141,18 @@ class Factura extends Component {
 
 
 const mapStateToProps = state => {
-  let aux = true;
+  let enable = true;
   if(state.Usuarios.length > 0){
     if(state.Cart.length > 0){
-      aux = false;
+      enable = false;
     }
   }
   return {
     products: state.Productos,
-    redirect: state.RedirectSign,
     Cart: state.Cart,
-    cantidad: state.Cart.length,
     Usuarios: state.Usuarios,
-    enable: aux
+    redirect: state.RedirectSign,
+    enable
   };
 };
 
@@ -148,8 +169,12 @@ const mapDispatchToProps = dispatch => {
     },
     USERS(){
       dispatch(USERS())
-    },CREATEBILL(Cart, Usuario,Valor){
-      dispatch(CREATEBILL(Cart, Usuario, Valor))
+    },
+    CREATEBILL(Cart, Usuario, Valor, Fecha){
+      dispatch(CREATEBILL(Cart, Usuario, Valor, Fecha))
+    },
+    GETPRODUCTS(){
+      dispatch(GETPRODUCTS());
     }
   }
 }

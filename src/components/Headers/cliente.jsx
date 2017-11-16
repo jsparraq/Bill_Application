@@ -24,6 +24,7 @@ const Headeradministrador = ({ LOGOUT }) => {
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to ='./productos' ><NavItem>Menú</NavItem></LinkContainer>
+            <LinkContainer to ='./facturas' ><NavItem>Compras</NavItem></LinkContainer>
             <LinkContainer to ='./perfil' ><NavItem>Perfil</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>

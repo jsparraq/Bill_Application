@@ -1,17 +1,22 @@
 //Dependencias
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 //Recursos
 import './css/index.css';
 
 //Actions
+import { GETPRODUCTS } from '../../Actions/producto';
 
 
-export const Productos =  ({ productos })=> {
-    return (
+class Productos extends Component {
+  componentWillMount(){
+    this.props.GETPRODUCTS();
+  }
+  render (){
+    return(
       <div className = "Galeria">
-        {productos.map((producto, key) =>
+        {this.props.productos.map((producto, key) =>
           <div className = "Producto" key = {key}>
             <div className = "Titulo text-center"> {producto.nombre}</div>
             <div>
@@ -24,6 +29,7 @@ export const Productos =  ({ productos })=> {
       </div>
     );
   }
+}
 
 const mapStateToProps = state => {
   return {
@@ -31,7 +37,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    GETPRODUCTS(){
+      dispatch(GETPRODUCTS());
+    }
+  }
+}
 
 
-
-export default connect(mapStateToProps, null)(Productos);
+export default connect(mapStateToProps, mapDispatchToProps)(Productos);

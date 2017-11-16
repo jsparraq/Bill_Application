@@ -63,22 +63,22 @@ class AddProducto extends Component{
         </div>
         <br/>
         <form ref = {(form) => {this.loginForm = form}}>
-          <FormGroup  >
+          <FormGroup>
             <ControlLabel><Label>Nombre del producto</Label></ControlLabel>
             <FormControl type = "text" inputRef = {(input) => {this.nameProductInput = input}}/>
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup  >
+          <FormGroup>
             <ControlLabel><Label>Precio del producto</Label></ControlLabel>
             <FormControl type = "number" inputRef = {(input) => {this.priceProductInput = input}}/>
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup >
+          <FormGroup>
             <ControlLabel><Label>Descripción del producto</Label></ControlLabel>
             <FormControl componentClass = "textarea" inputRef = {(input) => {this.descProductInput = input}}/>
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup >
+          <FormGroup>
             <ControlLabel><Label>Imagen del producto</Label></ControlLabel>
             <FormControl type = "file" inputRef = {(input) => {this.imageInput = input}}/>
             <FormControl.Feedback />

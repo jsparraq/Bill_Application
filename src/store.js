@@ -5,6 +5,24 @@ import Headeranonimo from './components/Headers/anonimo';
 import Headerempleado from './components/Headers/empleado';
 import Headercliente from './components/Headers/cliente';
 
+
+const factura = (state = null, action) => {
+	if(action.type === "FACTURA"){
+		return action.factura;
+	}else if(action.type === "LOGOUT"){
+		return null;
+	}
+	return state;
+}
+
+const Facturas = (state = [], action) => {
+	if(action.type === "MOSTRARBILLS"){
+		return action.facturas;
+	}else if(action.type === "LOGOUT"){
+		return [];
+	}
+	return state;
+}
 /**
  * [Cart description]
  * @param {Array}  [state=[]] [description]
@@ -15,6 +33,8 @@ const Cart = (state = [], action) => {
 		return state.concat(action.producto);
 	}if(action.type === "REMOVETOCART"){
 		return action.productos
+	}else if(action.type === "INICIO"){
+		return [];
 	}
 	return state;
 }
@@ -159,4 +179,4 @@ const logger = store => next => action => {
 	return result;
 }
 
-export default createStore(combineReducers({Usuarios, Cart, Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
+export default createStore(combineReducers({factura, Facturas, Usuarios, Cart, Producto, Header, Productos, Popup, Message, RedirectSign , User, Role}), applyMiddleware(logger, thunk));
